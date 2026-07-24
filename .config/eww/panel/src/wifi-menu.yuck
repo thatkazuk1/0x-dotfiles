@@ -31,14 +31,15 @@
         :spacing 4
         (for net in wifi_networks
           (eventbox :cursor "pointer"
-            (button :class "wifi-menu-item"
+            (button :class "wifi-menu-item ${net.in_use ? 'active' : ''}"
               :onclick "bash ~/.config/waybar/scripts/eww/eww-toggle-panel.sh close && bash ~/.config/eww/panel/scripts/wifi-connect.sh '${net.ssid}' '${net.security}' &"
               (box :orientation "horizontal"
                 :space-evenly false
                 :spacing 10
                 (label :class "wifi-menu-icon" :text {net.signal > 80 ? "󰤨" : net.signal > 60 ? "󰤥" : net.signal > 40 ? "󰤢" : net.signal > 20 ? "󰤟" : "󰤯"})
-                (label :class "wifi-menu-ssid" :text "${net.ssid}" :limit-width 30)
-                (label :class "wifi-menu-security" :text {net.security == "" || net.security == "--" ? "🔓" : "🔒"} :halign "end" :hexpand true)
+                (label :class "wifi-menu-ssid" :text "${net.ssid}" :limit-width 24)
+                (label :class "wifi-menu-connected" :text {net.in_use ? "" : ""} :halign "end" :hexpand true)
+                (label :class "wifi-menu-security" :text {net.security == "" || net.security == "--" ? "🔓" : "🔒"} :halign "end")
               )
             )
           )

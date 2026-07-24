@@ -65,6 +65,15 @@
     transition: all 0.2s ease;
   }
 
+  .wifi-menu-item.active {
+    background: $blue;
+    color: $crust;
+    
+    .wifi-menu-icon, .wifi-menu-connected, .wifi-menu-security {
+      color: $crust;
+    }
+  }
+
   .wifi-menu-item:hover {
     background: $surface1;
   }
@@ -84,5 +93,11 @@
   .wifi-menu-security {
     font-size: 16px;
     color: $subtext1;
+  }
+
+  .wifi-menu-connected {
+    font-size: 16px;
+    margin-right: 12px;
+    color: $green;
   }
 }
