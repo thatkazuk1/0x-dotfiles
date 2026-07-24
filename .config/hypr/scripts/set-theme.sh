@@ -26,6 +26,13 @@ if [ -f "$STATE_DIR/type" ]; then
     TYPE=$(cat "$STATE_DIR/type")
 fi
 
+# Set GTK System Theme appearance preference
+if [ "$MODE" = "light" ]; then
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+else
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+fi
+
 # Ensure awww-daemon is running
 if ! pgrep -x awww-daemon > /dev/null; then
     awww-daemon &
