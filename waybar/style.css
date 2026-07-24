@@ -1,0 +1,19 @@
+@import "styles/battery-clock.css";
+@import "styles/matugen.css";
+@import "styles/slider.css";
+@import "styles/state.css";
+@import "styles/widget.css";
+@import "styles/workspace.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  min-height: 0px;
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font";
+}
+
+window#waybar {
+  background: transparent;
+}

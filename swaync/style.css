@@ -1,0 +1,371 @@
+@import url("../../waybar/styles/matugen.css");
+
+@define-color fg @on_surface;
+@define-color fg2 @on_surface_variant;
+@define-color bg @surface;
+@define-color bg2 @surface_container;
+@define-color accent @primary;
+@define-color hover @surface_variant;
+
+* {
+  all: unset;
+  color: @fg;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  transition: 200ms;
+}
+
+.blank-window {
+  background-color: transparent;
+}
+
+/* --- NOTIFICATION --- */
+
+.notification-row {
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main background container */
+.floating-notifications.background .notification {
+  background-color: alpha(@bg, 0.85);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  margin: 4px;
+  padding: 0;
+  min-height: 100px;
+  height: auto;
+}
+
+/* Specific Urgency Borders */
+.floating-notifications.background .notification.low {
+  border: 1px solid @fg;
+}
+
+.floating-notifications.background .notification.normal {
+  border: 1px solid @accent;
+}
+
+.floating-notifications.background .notification.critical {
+  border: 2px solid @fg2;
+}
+
+.floating-notification.background .notification:hover {
+  background-image: none;
+  background-color: transparent;
+  border-color: @accent;
+}
+
+.notification-content {
+  background: transparent;
+  padding: 6px;
+}
+
+.floating-notification.background .notification .notification-content:hover {
+  all: unset;
+  background: transparent;
+}
+
+/* Actions (Buttons) */
+.notification-action {
+  border-radius: 20px;
+  background-color: transparent;
+  color: @fg;
+  margin: 6px;
+  border: 1px solid @fg;
+}
+
+.notification-action:hover {
+  background-color: alpha(@accent, 0.5);
+  border: 1px solid alpha(@accent, 0.5);
+  color: @bg;
+}
+
+.notification-action:active {
+  background-color: @accent;
+  color: @bg;
+}
+
+/* Text and Images */
+.image {
+  margin: 10px;
+}
+
+.summary {
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.body {
+  all: unset;
+  font-size: 0.8rem;
+  -gtk-icon-shadow: none;
+}
+
+/* Close Button */
+.close-button {
+  margin: 6px;
+  padding: 4px;
+  border-radius: 10px;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.close-button:hover {
+  background-color: @hover;
+}
+
+/* Progress Bar (at the bottom of notification) */
+.notification progress {
+  background-color: @accent;
+}
+
+/* ---- CONTROL CENTER ---- */
+
+.control-center {
+  background-color: alpha(@bg, 0.85);
+  border-radius: 0px;
+  padding: 0px 8px;
+  border-radius: 15px 0px 0px 15px;
+  border-left: 2px solid @accent;
+}
+
+/* --- Notifications Logic --- */
+
+/* Normal Notifications */
+.control-center .notification-row .notification-background .notification.normal {
+  background-color: alpha(@bg2, 0.9);
+  border-radius: 10px;
+  margin: 4px 0px;
+  padding: 4px;
+  color: @fg;
+  border: 1px solid @accent;
+}
+
+/* Critical Notifications */
+.control-center .notification-row .notification-background .notification.critical {
+  background-color: alpha(@bg2, 0.9);
+  border-radius: 10px;
+  margin: 4px 0px;
+  padding: 4px;
+  color: @fg2;
+  border: 2px solid @fg2;
+}
+
+.control-center .notification-row .notification-background .notification .notification-content {
+  margin: 6px;
+  padding: 8px 6px 2px 2px;
+}
+
+/* Action Buttons */
+.control-center .notification-row .notification-background .notification > *:last-child > * .notification-action {
+  background-color: alpha(@bg, 0.7);
+  color: @fg;
+  border-radius: 12px;
+  margin: 6px;
+  border: 1px solid @bg;
+}
+
+.control-center .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
+  background-color: alpha(@accent, 0.6);
+  border: 1px solid @accent;
+  color: @bg;
+}
+
+/* Close Button */
+.control-center .notification-row .notification-background .close-button {
+  background: transparent;
+  border-radius: 10px;
+  color: @fg;
+  margin: 4px;
+  padding: 4px;
+}
+
+.control-center .notification-row .notification-background .close-button:hover {
+  background-color: @hover;
+  color: @accent;
+}
+
+/* --- Progress and Scrollbars --- */
+progressbar,
+progress,
+trough {
+  border-radius: 12px;
+}
+
+progressbar {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Grouping --- */
+.notification-group {
+  margin: 2px 8px 2px 8px;
+}
+
+.notification-group-headers {
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: @fg;
+  letter-spacing: 2px;
+}
+
+.notification-group-collapse-button,
+.notification-group-close-all-button {
+  background: transparent;
+  color: @fg;
+  margin: 4px;
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.notification-group-collapse-button:hover,
+.notification-group-close-all-button:hover {
+  background: @hover;
+  color: @accent;
+}
+
+/* --- Widgets --- */
+
+.widget-title {
+  font-size: 1.2em;
+  margin: 6px;
+  color: @fg;
+}
+
+.widget-title > button {
+  background: @bg2;
+  border-radius: 6px;
+  padding: 4px 4px;
+  color: @fg;
+  transition: all 0.3s ease-in-out;
+}
+
+.widget-title > button:hover {
+  min-width: 40px;
+  background: @hover;
+  color: @accent;
+}
+
+.widget-dnd {
+  margin: 6px;
+  font-size: 1.2rem;
+  color: @fg;
+}
+
+.widget-dnd > switch {
+  background: @bg2;
+  font-size: initial;
+  border-radius: 8px;
+  box-shadow: none;
+  padding: 4px;
+}
+
+.widget-dnd > switch:hover {
+  background: @hover;
+}
+
+.widget-dnd > switch:checked {
+  background: @accent;
+}
+
+.widget-dnd > switch:checked:hover {
+  background: alpha(@accent, 0.8);
+}
+
+.widget-dnd > switch slider {
+  background: @fg;
+  border-radius: 6px;
+}
+
+/* --- Music Player (MPRIS) --- */
+.widget-mpris {
+  background: transparent;
+  padding: 0;
+  margin: 10px 4px;
+}
+
+.widget-mpris carousel,
+.widget-mpris stack {
+  background-color: alpha(@bg, 0.7) !important;
+  border-radius: 12px;
+}
+
+.widget-mpris-player {
+  background-color: alpha(@bg2, 0.6);
+  background-image: none !important;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 8px 16px;
+  border: 1px solid @accent;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.4);
+}
+
+.widget-mpris-player > box {
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+.widget-mpris-album-art {
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  min-width: 80px;
+  min-height: 80px;
+}
+
+.widget-mpris-title {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: @accent;
+}
+
+.widget-mpris-subtitle {
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: @fg;
+  opacity: 0.8;
+}
+
+.widget-mpris-player > box > button {
+  background: transparent;
+  color: @fg;
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.widget-mpris-player > box > button:hover {
+  background: @hover;
+  color: @accent;
+}
+
+/* Buttons menu */
+.widget-buttons-grid {
+  font-size: x-large;
+  padding: 0px 0px;
+  margin: 0px 6px 6px 6px;
+  background: transparent;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-weight: bold;
+  font-size: 22px;
+  margin: 6px 4px;
+  padding: 12px 18px;
+  background: @bg2;
+  color: @fg;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+  background: @hover;
+  color: @accent;
+  min-width: 40px;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:active {
+  color: @bg;
+  background: @accent;
+}

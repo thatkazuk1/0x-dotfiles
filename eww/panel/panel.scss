@@ -1,0 +1,74 @@
+@import "../theme/base.scss";
+
+.panel-wrapper {
+  background: transparent;
+}
+
+.panel-close-area {
+  background: transparent;
+  min-height: 20px;
+}
+
+.panel-card {
+  background-color: $glass;
+  border-radius: $rad;
+  padding: 14px;
+  min-width: 3px;
+
+  .left-box {
+    background-color: $base;
+    padding: 14px;
+    border-radius: $rad;
+  }
+
+  .dnd-card,
+  .sub-right-box {
+    background-color: $base;
+    padding: 20px 16px;
+    border-radius: $rad;
+  }
+}
+
+.wifi-menu-card {
+  background-color: $glass;
+  border-radius: $rad;
+  padding: 16px;
+  min-width: 3px;
+
+  .wifi-menu-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: $text;
+  }
+  
+  .wifi-menu-close {
+    color: $text;
+    background: transparent;
+    padding: 4px;
+    border-radius: $rad;
+  }
+  
+  .wifi-menu-close:hover {
+    color: $text;
+    background: $base;
+  }
+
+  .wifi-menu-item {
+    background: transparent;
+    color: $text;
+    padding: 10px;
+    border-radius: $rad;
+  }
+
+  .wifi-menu-item:hover {
+    background: $base;
+  }
+
+  .wifi-menu-icon {
+    font-size: 18px;
+  }
+  
+  .wifi-menu-ssid {
+    font-size: 14px;
+  }
+}

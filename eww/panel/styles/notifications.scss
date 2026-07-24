@@ -1,0 +1,77 @@
+@import "../../theme/base.scss";
+
+.notif-card {
+  background-color: $base;
+  border-radius: $rad;
+  padding: 14px 16px;
+
+  .notif-title {
+    font-family: "Inter";
+    font-size: $normal;
+    color: $text;
+  }
+
+  .notif-clear-all {
+    font-family: "Inter";
+    font-size: $small;
+    color: $subtext0;
+    background-color: $surface0;
+    border-radius: $rad;
+    padding: 4px 12px;
+
+    &:hover {
+      color: $text;
+      background-color: $surface1;
+    }
+  }
+
+  .notif-empty {
+    font-family: "Inter";
+    font-size: $small;
+    color: $overlay1;
+    padding: 18px 0;
+  }
+
+  .notif-item {
+    background-color: $surface0;
+    border-radius: $rad;
+    padding: 10px 12px;
+
+    .notif-app {
+      font-family: "Inter";
+      font-size: $xsmall;
+      color: $blue;
+    }
+
+    .notif-time {
+      font-family: "Inter";
+      font-size: $xsmall;
+      color: $overlay1;
+    }
+
+    .notif-summary {
+      font-family: "Inter";
+      font-size: $small;
+      color: $text;
+    }
+
+    .notif-body {
+      font-family: "Inter";
+      font-size: $xsmall;
+      color: $subtext0;
+    }
+
+    .notif-dismiss {
+      font-size: $xsmall;
+      color: $overlay1;
+      background-color: transparent;
+      border-radius: 50%;
+      padding: 2px 6px;
+
+      &:hover {
+        color: $red;
+        background-color: $surface1;
+      }
+    }
+  }
+}

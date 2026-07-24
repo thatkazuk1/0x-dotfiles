@@ -1,0 +1,49 @@
+@import "colors.css";
+
+#battery {
+  margin: 4px 5px;
+  padding: 6px 16px;
+  background-color: @surface_container;
+  border-radius: 20px;
+  color: @secondary_fixed_dim;
+}
+
+#battery-group {
+  margin: 4px 5px;
+  background-color: @surface_container;
+  border-radius: 20px;
+}
+
+#battery,
+#custom-battery-degradation {
+  background-color: transparent;
+  border-radius: 0;
+  margin: 0;
+}
+
+#battery {
+  padding: 6px 8px 6px 16px;
+  color: @secondary_fixed_dim;
+}
+
+#custom-battery-degradation {
+  padding: 6px 16px 6px 0;
+  color: @outline;
+  min-width: 42px;
+}
+
+#clock {
+  margin: 4px 5px;
+  padding: 6px 10px 6px 16px;
+  background-color: @surface_container;
+  border-radius: 20px;
+  color: @secondary_fixed_dim;
+}
+
+#custom-ycal {
+  margin: 4px 5px;
+  padding: 6px 16px;
+  background-color: @surface_container;
+  border-radius: 20px;
+  color: @secondary_fixed_dim;
+}

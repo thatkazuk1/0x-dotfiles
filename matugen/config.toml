@@ -1,0 +1,23 @@
+[config]
+reload_apps = true
+wallpaper_tool = "hyprpaper"
+
+[templates.hyprland]
+input_path = "~/.config/matugen/templates/hyprland-colors.conf"
+output_path = "~/.config/hypr/colors-matugen.conf"
+
+[templates.waybar]
+input_path = "~/.config/matugen/templates/waybar-colors.css"
+output_path = "~/.config/waybar/styles/matugen.css"
+
+[templates.kitty]
+input_path = "~/.config/matugen/templates/kitty-colors.conf"
+output_path = "~/.config/kitty/colors-matugen.conf"
+
+[templates.wofi]
+input_path = "~/.config/matugen/templates/wofi-colors.css"
+output_path = "~/.config/wofi/colors-matugen.css"
+
+[templates.eww]
+input_path = "~/.config/matugen/templates/eww-colors.scss"
+output_path = "~/.config/eww/theme/colors-matugen.scss"

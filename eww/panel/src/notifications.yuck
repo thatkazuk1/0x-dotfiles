@@ -1,0 +1,70 @@
+(defpoll notifications :interval "3s" :initial "[]" "bash ~/.config/eww/panel/scripts/notif-store.sh get")
+
+(defwidget widget_notifications []
+  (box :class "notif-card"
+    :orientation "vertical"
+    :space-evenly false
+    :spacing 10
+
+    ;; Header row: title + Clear all
+    (box :orientation "horizontal"
+      :space-evenly false
+      (label :class "notif-title"
+        :text "Notifications"
+        :halign "start"
+      :hexpand true)
+      (eventbox :cursor "pointer"
+        :visible {arraylength(notifications) > 0}
+        (button :class "notif-clear-all"
+          :onclick "bash ~/.config/eww/panel/scripts/notif-store.sh clear &"
+        "Clear all")))
+
+    ;; Empty state
+    (label :class "notif-empty"
+      :text "No new notifications"
+      :halign "center"
+      :visible {arraylength(notifications) == 0})
+
+    ;; The list
+    (scroll :height 220
+      :vscroll true
+      :hscroll false
+      :visible {arraylength(notifications) > 0}
+      (box :orientation "vertical"
+        :space-evenly false
+        :spacing 8
+        (for n in notifications
+          (box :class "notif-item"
+            :orientation "horizontal"
+            :space-evenly false
+            :spacing 10
+
+            (box :orientation "vertical"
+              :space-evenly false
+              :spacing 2
+              :hexpand true
+              (box :orientation "horizontal"
+                :space-evenly false
+                :spacing 8
+                (label :class "notif-app"
+                  :text "${n.app}"
+                  :halign "start"
+                  :hexpand true
+                :limit-width 26)
+                (label :class "notif-time"
+                :text "${n.time}"))
+              (label :class "notif-summary"
+                :text "${n.summary}"
+                :halign "start"
+              :wrap true)
+              (label :class "notif-body"
+                :text "${n.body}"
+                :halign "start"
+                :wrap true
+              :visible {n.body != ""}))
+
+            (eventbox :cursor "pointer"
+              :valign "start"
+              (button :class "notif-dismiss"
+                :onclick "bash ~/.config/eww/panel/scripts/notif-store.sh remove ${n.id} &"
+              "✕"))))))))

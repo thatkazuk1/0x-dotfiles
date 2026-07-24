@@ -1,0 +1,79 @@
+{
+  "hyprland/workspaces": {
+    "format": "{icon} {windows}",
+    "on-click": "activate",
+    "persistent-workspaces": {
+      "[]": 2
+    },
+    "window-rewrite-default": "󰊠",
+    "window-rewrite": {
+      // --- Work ---
+      "kitty": "󰆍",
+      "warp": "",
+      "dev.warp.Warp": "",
+      "onlyoffice": "󰏆",
+      "firefox": "",
+      "code": "󰨞",
+      "azahar": "",
+      "obsidian": "󰹕",
+      "mousepad": "󱓧",
+
+      // --- Apps ---
+      "discord": "",
+      "spotify": "",
+      "org.kde.kdeconnect.app": "󰦉",
+      "org.qbittorrent.qBittorrent": "󰘿",
+      "antigravity": "",
+      "antigravity-ide": "",
+
+      // --- Graphics & Visual ---
+      "xdg-desktop-portal-gtk": "",
+      "thunar": "",
+      "nautilus": "",
+      "yazi": "󰇥",
+      "imv": "󰄄",
+      "swappy": "󰄄",
+      "org.gnome.FileRoller": "",
+      "vlc": "󰕼",
+      "mpv": "󰕼",
+
+      // --- System ---
+      "blueman-manager": "",
+      "pavucontrol": "󱕂",
+      "nm-connection-editor": "󰐻",
+
+      // --- Tool ---
+      "nwg-look": "󰒓",
+      "qt5ct": "󰒓",
+      "qt6ct": "󰒓",
+      "designer": "󰒓",
+      "linguist": "󰒓",
+      "assistant": "󰒓",
+      "pixeltool": "󰒓",
+      "qdbusviewer": "󰒓",
+
+      // --- Browsers ---
+      "vivaldi-stable": "󰖟",
+      "vivaldi": "󰖟",
+      "brave-browser": "󰊯",
+      "brave": "󰊯",
+      "microsoft-edge": "󰇩",
+      "google-chrome": "",
+      "chromium": "",
+
+      // --- Editor ---
+      "zed": ""
+    },
+    "format-icons": {
+      "active": "󰮯",
+      "special": "󱁂",
+      "default": "󰊠",
+      "urgent": "󰧵",
+      "empty": ""
+    },
+    "activate-only": false,
+    "show-special": true,
+    "all-outputs": false,
+    "sort-by-number": true
+  }
+}

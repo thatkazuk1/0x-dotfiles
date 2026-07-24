@@ -1,0 +1,6 @@
+# Ignore secrets and cache
+.cache/
+waybar-ycal-credentials.json
+*.token
+*.env
+*.bak

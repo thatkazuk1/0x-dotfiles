@@ -1,0 +1,51 @@
+(defpoll wifi_networks :interval "5s" "bash ~/.config/eww/panel/scripts/wifi_menu_data.sh")
+(defvar wifi_menu_open false)
+
+(defwindow window_wifi_menu
+  :monitor 0
+  :geometry (geometry :x "20px"
+    :y "20px"
+    :width "300px"
+    :height "400px"
+  :anchor "top right")
+  :stacking "overlay"
+  :namespace "eww-wifi-menu"
+  :focusable true
+  (widget_wifi_menu_content))
+
+(defwidget widget_wifi_menu_content []
+  (box :class "wifi-menu-card"
+    :orientation "vertical"
+    :space-evenly false
+    :spacing 10
+
+    (box :orientation "horizontal"
+      :space-evenly true
+      (label :class "wifi-menu-title" :text "Wi-Fi Networks" :halign "start")
+      (button :class "wifi-menu-close" :halign "end" :onclick "eww close window_wifi_menu" "✕")
+    )
+
+    (scroll :height 320
+      :vscroll true
+      :hscroll false
+      (box :orientation "vertical"
+        :space-evenly false
+        :spacing 4
+        (for net in wifi_networks
+          (eventbox :cursor "pointer"
+            (button :class "wifi-menu-item"
+              :onclick "eww close window_wifi_menu && bash ~/.config/eww/panel/scripts/wifi_connect.sh '${net.ssid}' '${net.security}' &"
+              (box :orientation "horizontal"
+                :space-evenly false
+                :spacing 10
+                (label :class "wifi-menu-icon" :text {net.signal > 80 ? "󰤨" : net.signal > 60 ? "󰤥" : net.signal > 40 ? "󰤢" : net.signal > 20 ? "󰤟" : "󰤯"})
+                (label :class "wifi-menu-ssid" :text "${net.ssid}" :limit-width 18)
+                (label :class "wifi-menu-security" :text {net.security == "" || net.security == "--" ? "🔓" : "🔒"} :halign "end" :hexpand true)
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
