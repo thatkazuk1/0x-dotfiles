@@ -14,4 +14,5 @@ print(focused)
 ")
 FOCUSED="${MONITORS[0]}"
 
+eww close window_panel 2>/dev/null
 eww open window_wifi_menu --screen "$FOCUSED"

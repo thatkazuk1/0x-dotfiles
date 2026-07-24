@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 close_panel() {
   eww close window_panel 2>/dev/null
+  eww close window_wifi_menu 2>/dev/null
+  hyprctl dispatch submap reset
   while IFS=: read -r instance _name; do
     eww close "$instance" 2>/dev/null
   done < <(eww active-windows | grep "window_closer")
@@ -31,3 +33,4 @@ for mon in "${MONITORS[@]:1}"; do
 done
 
 eww open window_panel --screen "$FOCUSED"
+hyprctl dispatch submap eww

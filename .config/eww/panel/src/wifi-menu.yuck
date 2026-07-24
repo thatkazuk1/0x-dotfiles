@@ -3,11 +3,9 @@
 
 (defwindow window_wifi_menu
   :monitor 0
-  :geometry (geometry :x "460px"
-    :y "20px"
-    :width "340px"
-    :height "400px"
-  :anchor "top right")
+  :geometry (geometry :width "450px"
+    :height "500px"
+  :anchor "center")
   :stacking "overlay"
   :namespace "eww-wifi-menu"
   :focusable true
@@ -22,10 +20,10 @@
     (box :orientation "horizontal"
       :space-evenly true
       (label :class "wifi-menu-title" :text "Wi-Fi Networks" :halign "start")
-      (button :class "wifi-menu-close" :halign "end" :onclick "eww close window_wifi_menu" "✕")
+      (button :class "wifi-menu-close" :halign "end" :onclick "bash ~/.config/waybar/scripts/eww/eww-toggle-panel.sh close &" "✕")
     )
 
-    (scroll :height 320
+    (scroll :height 420
       :vscroll true
       :hscroll false
       (box :orientation "vertical"
@@ -34,12 +32,12 @@
         (for net in wifi_networks
           (eventbox :cursor "pointer"
             (button :class "wifi-menu-item"
-              :onclick "eww close window_wifi_menu && bash ~/.config/eww/panel/scripts/wifi-connect.sh '${net.ssid}' '${net.security}' &"
+              :onclick "bash ~/.config/waybar/scripts/eww/eww-toggle-panel.sh close && bash ~/.config/eww/panel/scripts/wifi-connect.sh '${net.ssid}' '${net.security}' &"
               (box :orientation "horizontal"
                 :space-evenly false
                 :spacing 10
                 (label :class "wifi-menu-icon" :text {net.signal > 80 ? "󰤨" : net.signal > 60 ? "󰤥" : net.signal > 40 ? "󰤢" : net.signal > 20 ? "󰤟" : "󰤯"})
-                (label :class "wifi-menu-ssid" :text "${net.ssid}" :limit-width 18)
+                (label :class "wifi-menu-ssid" :text "${net.ssid}" :limit-width 30)
                 (label :class "wifi-menu-security" :text {net.security == "" || net.security == "--" ? "🔓" : "🔒"} :halign "end" :hexpand true)
               )
             )
