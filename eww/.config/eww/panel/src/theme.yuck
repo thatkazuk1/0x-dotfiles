@@ -1,0 +1,33 @@
+(defwidget widget_theme []
+  (eventbox :cursor "pointer"
+    (button :class "theme-btn theme-${theme_mode}"
+      :onclick "~/.config/eww/panel/scripts/theme-toggle.sh &"
+      (box :orientation "vertical"
+        :space-evenly false
+        :spacing 8
+        :valign "center"
+        :halign "center"
+        :hexpand true
+
+        (box :class "theme-box"
+          :valign "center"
+          :halign "center"
+          (label :class "theme-icon"
+            :valign "center"
+            :halign "center"
+          :text {theme_mode == "light" ? "󰖨" : "󰖔"}))
+
+        (box :orientation "vertical"
+          :space-evenly false
+          :spacing 0
+          :valign "center"
+          :halign "center"
+          (label :class "label"
+            :text "System"
+          :halign "center")
+          (label :class "label"
+            :text "Theme"
+          :halign "center")))
+    )
+  )
+)

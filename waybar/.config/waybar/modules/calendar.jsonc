@@ -1,0 +1,8 @@
+{
+  "custom/ycal": {
+    "exec": "~/.local/share/waybar-ycal-venv/bin/python ~/.config/waybar-ycal/bar.py",
+    "return-type": "json",
+    "interval": 60,
+    "on-click": "~/.config/waybar-ycal/toggle.sh"
+  }
+}

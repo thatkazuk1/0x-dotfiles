@@ -1,0 +1,46 @@
+$rad: 14px;
+$xsmall: 10px;
+$small: 12px;
+$normal: 14px;
+$large: 16px;
+$larger: 18px;
+
+$glass: rgba(26, 27, 38, 0.85);
+$trough: rgba(86, 95, 137, 0.1);
+
+@import "colors-matugen.scss";
+
+// Map Matugen surface colors to Eww semantic variables
+$base: $surface;
+$mantle: $surface_container_low;
+$crust: $surface_container_lowest;
+
+$surface0: $surface_container;
+$surface1: $surface_container_high;
+$surface2: $surface_container_highest;
+
+// Text colors
+$text: $on_surface;
+$subtext1: $on_surface_variant;
+$subtext0: $outline;
+
+// Overlays
+$overlay2: $outline;
+$overlay1: $outline_variant;
+$overlay0: $outline_variant;
+
+// Accents mapped to Material 3
+$rosewater: $primary_fixed_dim;
+$flamingo: $tertiary_fixed;
+$pink: $tertiary;
+$mauve: $primary_container;
+$red: $error;
+$maroon: $error_container;
+$peach: $secondary;
+$yellow: $tertiary_container;
+$green: $primary_fixed;
+$teal: $secondary_fixed;
+$sky: $secondary_fixed_dim;
+$sapphire: $primary;
+$blue: $primary;
+$lavender: $on_primary_container;

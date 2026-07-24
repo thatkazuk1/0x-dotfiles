@@ -1,0 +1,57 @@
+@import "../../theme/base.scss";
+
+.theme-btn {
+  box-shadow: none;
+  background-color: transparent;
+  background-image: none;
+
+  .theme-box {
+    min-width: 42px;
+    min-height: 42px;
+    border-radius: 99px;
+    transition: background-color 0.15s ease;
+
+    .theme-icon {
+      font-size: 22px;
+      margin-left: -6px;
+    }
+  }
+
+  &.theme-light {
+    .theme-box {
+      background-image: linear-gradient(to right, $yellow, $peach);
+
+      .theme-icon {
+        color: rgba($mantle, 0.95);
+      }
+    }
+
+    &:hover {
+      .theme-box {
+        background-color: $peach;
+      }
+    }
+  }
+
+  &.theme-dark {
+    .theme-box {
+      background-color: rgba($subtext1, 0.3);
+
+      .theme-icon {
+        color: $lavender;
+      }
+    }
+
+    &:hover {
+      .theme-box {
+        background-color: rgba($surface1, 0.6);
+      }
+    }
+  }
+
+  .label {
+    font-size: 13px;
+    font-weight: bold;
+    color: $text;
+  }
+}

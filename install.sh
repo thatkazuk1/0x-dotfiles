@@ -18,17 +18,13 @@ PACKAGES=(
     "eww"
     "swaync"
     "matugen"
+    "nvim"
+    "zsh"
 )
 
 for pkg in "${PACKAGES[@]}"; do
     echo "Stowing $pkg..."
-    # If the target exists and is a directory (not a symlink), we need to back it up or remove it
-    TARGET="$CONFIG_DIR/$pkg"
-    if [ -d "$TARGET" ] && [ ! -L "$TARGET" ]; then
-        echo "Found existing directory at $TARGET. Backing up to $TARGET.bak..."
-        mv "$TARGET" "$TARGET.bak"
-    fi
-    stow -t "$CONFIG_DIR" "$pkg"
+    stow -t "$HOME" "$pkg" --restow
 done
 
 echo "Dotfiles stowed successfully!"
