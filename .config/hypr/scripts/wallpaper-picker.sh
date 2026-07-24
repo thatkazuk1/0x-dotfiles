@@ -54,7 +54,7 @@ if [[ -n "$thumbnailer" ]]; then
 fi
 
 build_entries() {
-    printf 'img:media-playlist-shuffle:text:🎲 Random wallpaper\n'
+    printf '🎲 Random wallpaper\0icon\x1fmedia-playlist-shuffle\n'
     for f in "${files[@]}"; do
         name=$(basename "$f")
         if [[ -n "$thumbnailer" ]]; then
@@ -63,24 +63,16 @@ build_entries() {
         else
             icon="$f"
         fi
-        # Wofi requires the img:<path>:text:<name> syntax!
-        printf 'img:%s:text:%s\n' "$icon" "$name"
+        # Rofi dmenu icon format: text\0icon\x1f/path
+        printf '%s\0icon\x1f%s\n' "$name" "$icon"
     done
 }
 
-selected=$(build_entries | wofi --show dmenu -i \
-    --prompt "  Wallpapers ($count)" \
-    --allow-images \
-    --image-size 80 \
-    --width 500 \
-    --lines 7)
+selected=$(build_entries | rofi -dmenu -i \
+    -p "  Wallpapers ($count)" \
+    -theme ~/.config/rofi/wallpaper-picker.rasi)
 
 [[ -z "$selected" ]] && exit 0
-
-# Wofi returns the EXACT string we fed it.
-# We must strip out the 'img:path:text:' prefix to get the raw filename back!
-selected="${selected##*:text:}"
-selected="${selected%"${selected##*[![:space:]]}"}"
 
 # Resolve to a real path
 if [[ "$selected" == "🎲 Random wallpaper" ]]; then

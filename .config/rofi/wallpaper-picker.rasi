@@ -1,0 +1,98 @@
+configuration {
+    modi:                        "dmenu";
+    show-icons:                  true;
+    dmenu-display-format:        "{name}";
+    hover-select:                true;
+    me-select-entry:             "";
+    me-accept-entry:             "MousePrimary";
+}
+
+@import "colors-matugen.rasi"
+
+window {
+    enabled:                     true;
+    fullscreen:                  false;
+    width:                       1000px;
+    transparency:                "real";
+    cursor:                      "default";
+    spacing:                     0em;
+    padding:                     0em;
+    border:                      2px;
+    border-radius:               20px;
+    border-color:                @selected;
+    background-color:            @background;
+}
+
+mainbox {
+    enabled:                     true;
+    children:                    [ "inputbar", "listview" ];
+    background-color:            transparent;
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     1em;
+    padding:                     2em;
+    children:                    [ "prompt" ];
+    background-color:            transparent;
+}
+
+prompt {
+    enabled:                     true;
+    font:                        "Inter 16";
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+listview {
+    enabled:                     true;
+    columns:                     4;
+    lines:                       3;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    spacing:                     1em;
+    padding:                     1em;
+    margin:                      0em 1em 1em 1em;
+    background-color:            transparent;
+    cursor:                      "default";
+}
+
+element {
+    enabled:                     true;
+    orientation:                 vertical;
+    spacing:                     0em;
+    padding:                     0.5em;
+    border-radius:               15px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+
+element normal.normal {
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @background;
+}
+
+element-icon {
+    size:                        200px;
+    cursor:                      inherit;
+    border-radius:               10px;
+    background-color:            transparent;
+    text-color:                  inherit;
+    horizontal-align:            0.5;
+    vertical-align:              0.5;
+}
+
+element-text {
+    enabled:                     false;
+}
