@@ -17,6 +17,7 @@ Personal dotfiles for my Linux environment (Ubuntu 26.04 LTS), running a Wayland
     - [Testing](#testing)
   - [How to Get Help](#how-to-get-help)
   - [Contributing](#contributing)
+  - [Credits](#credits)
   - [Authors](#authors)
     - [Repo Activity](#repo-activity)
 
@@ -24,12 +25,13 @@ Personal dotfiles for my Linux environment (Ubuntu 26.04 LTS), running a Wayland
 
 This repository houses my configuration files for a bespoke Linux environment centered around **Hyprland** (a dynamic tiling Wayland compositor). It features a highly integrated, aesthetically pleasing, and functionally rich workspace. The setup seamlessly weaves together multiple modern components:
 
-- A dynamic color extraction engine that alters the entire system theme based on the wallpaper.
-- A highly customized, widget-rich control center powered by Eww.
-- A versatile status bar configured via Waybar, fully integrated with Google Calendar and system services.
-- A unified notification daemon (SwayNC) and dynamic launcher (Wofi).
+- A dynamic color extraction engine (Matugen) that alters the entire system theme based on the wallpaper.
+- **Quickshell**, running a customized build of [ukishima](https://github.com/amanhex/ukishima) (see [Credits](#credits)), as the primary shell — bar, power menu, wallpaper picker/applier, and system monitor.
+- A widget-rich control center powered by Eww, and a dynamic launcher (Wofi).
 
-Everything is managed via GNU Stow to keep the home directory clean and version-controlled.
+Waybar, SwayNC, wlogout, and the rofi wallpaper picker are still present in the repo but retired in favor of Quickshell/ukishima — their configs remain for reference and easy fallback.
+
+Each config directory under `.config/` is symlinked into `~/.config/` by `install.sh`.
 
 ## Project Status
 
@@ -45,15 +47,16 @@ Currently stable and used as a daily driver. Active iterations continue on the E
 To fully utilize this environment, the following core dependencies must be installed:
 
 - **Hyprland** (Wayland Compositor)
-- **Waybar** (Status Bar)
+- **Quickshell** (Primary shell — bar, power menu, wallpaper, sysinfo; see `.config/quickshell`)
+- **ImageMagick** (`magick` CLI — wallpaper thumbnail generation) & **ffmpeg** (video wallpaper thumbnails)
+- **awww** (wallpaper daemon) & **mpvpaper** (optional, animated wallpapers)
+- **jq** (JSON parsing, used by quickshell's wallpaper scripts)
 - **Eww** (Elkowars Wacky Widgets - used for the Control Center)
-- **SwayNC** (Notification Daemon)
 - **Wofi** (App Launcher)
 - **Matugen** (Dynamic Color Generator)
-- **GNU Stow** (Dotfiles Manager)
-- **wf-recorder** & **slurp** (Screen recording)
 - **hyprshot** (Screenshots)
-- **waybar-ycal** (Google Calendar integration for Waybar)
+- **Waybar**, **SwayNC**, **wlogout** (legacy status bar / notifications / logout menu — retired in favor of Quickshell, kept for reference)
+- **waybar-ycal** (Google Calendar integration for Waybar, if re-enabled)
 
 ### Technology Stack
 
@@ -76,7 +79,7 @@ To fully utilize this environment, the following core dependencies must be insta
    ```
 
 2. **Install using the script:**
-   The repository includes a bootstrap script that installs `stow` (if missing) and automatically creates symlinks to `~/.config/`.
+   The repository includes a bootstrap script that symlinks (`ln -sfn`) every directory under `.config/` into `~/.config/`, and `.zshrc` into `~/.zshrc`. Any pre-existing real directory/file at the target is backed up to `.bak` first.
    ```bash
    ./install.sh
    ```
@@ -105,6 +108,12 @@ Notice a bug? please open an issue. Need more clarification on any part of the c
 ## Contributing
 
 To contribute to this project, start by raising an issue. There are issue templates for bug and feature request. Once this issue has been agreed upon, you can create a feature or hotfix branch off develop or master (for hotfix) and raise PR. There is also a PR template.
+
+**[Back to top](#table-of-contents)**
+
+## Credits
+
+`.config/quickshell` borrows heavily from [ukishima](https://github.com/amanhex/ukishima) by [amanhex](https://github.com/amanhex) — it started as a clone of that project and has been customized and folded directly into this repo (no longer tracks upstream history).
 
 **[Back to top](#table-of-contents)**
 

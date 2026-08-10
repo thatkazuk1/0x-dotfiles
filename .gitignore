@@ -1,6 +1,8 @@
-# Ignore secrets and cache
 .cache/
-waybar-ycal-credentials.json
+.claude
 *.token
 *.env
 *.bak
+
+waybar-ycal-credentials.json
+CLAUDE.md
