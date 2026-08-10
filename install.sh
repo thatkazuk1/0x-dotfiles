@@ -26,13 +26,15 @@ for config_dir in "$DOTFILES_DIR/.config"/*; do
     fi
 done
 
-# Symlink .zshrc
-TARGET_ZSHRC="$HOME/.zshrc"
-if [ -f "$TARGET_ZSHRC" ] && [ ! -L "$TARGET_ZSHRC" ]; then
-    echo "Found existing file at $TARGET_ZSHRC. Backing up to $TARGET_ZSHRC.bak..."
-    mv "$TARGET_ZSHRC" "$TARGET_ZSHRC.bak"
-fi
-echo "Symlinking .zshrc..."
-ln -sfn "$DOTFILES_DIR/.zshrc" "$TARGET_ZSHRC"
+# Symlink top-level dotfiles
+for dotfile in .zshrc .vimrc .p10k.zsh; do
+    TARGET="$HOME/$dotfile"
+    if [ -f "$TARGET" ] && [ ! -L "$TARGET" ]; then
+        echo "Found existing file at $TARGET. Backing up to $TARGET.bak..."
+        mv "$TARGET" "$TARGET.bak"
+    fi
+    echo "Symlinking $dotfile..."
+    ln -sfn "$DOTFILES_DIR/$dotfile" "$TARGET"
+done
 
 echo "Dotfiles symlinked successfully!"

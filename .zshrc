@@ -224,9 +224,6 @@ eval "$(rbenv init -)"
 eval "$(atuin init zsh)"
 . "$HOME/.atuin/bin/env"
 
-# Readme-Generator-for-Helm
-export PATH="/home/oxdfa/Downloads/programs/readme-generator-for-helm/readme-generator-for-helm:$PATH"
-
 # opencode
 export PATH=/home/oxdfa/.opencode/bin:$PATH
 export PATH="$HOME/.cargo/bin:$PATH"
