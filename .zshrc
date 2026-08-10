@@ -207,8 +207,6 @@ export INFOPATH="$INFOPATH:$HOME/texlive/2022/texmf-dist/doc/info"
 export KUBECONFIG="$HOME/.talos/config/kubeconfig"
 export TALOSCONFIG="$HOME/.talos/config/talosconfig"
 
-# Add kubectl to Path
-export PATH=$PATH:$HOME/.local/bin
 
 # Change terminal title to reflect current directory
 # PROMPT_COMMAND='echo -ne "\033]0;$(basename "$(pwd)")\007"'
