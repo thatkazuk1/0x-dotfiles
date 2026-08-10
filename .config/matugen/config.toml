@@ -25,7 +25,3 @@ output_path = "~/.config/eww/theme/colors-matugen.scss"
 [templates.rofi]
 input_path = "~/.config/matugen/templates/rofi-colors.rasi"
 output_path = "~/.config/rofi/colors-matugen.rasi"
-
-[templates.quickshell]
-input_path = "~/.config/matugen/templates/quickshell-colors.qml"
-output_path = "~/.config/quickshell/colors.qml"

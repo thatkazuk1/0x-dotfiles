@@ -158,10 +158,6 @@ def main():
     except (OSError, ValueError, KeyError, subprocess.SubprocessError):
         return 0
 
-    (CACHE / "hypr-colors.lua").write_text(
-        'return {\n    active = "%s",\n    inactive = "%s",\n}\n'
-        % (pill["primary"], b["base01"]))
-
     lines = [
         f'background = {b["base00"]}',
         f'foreground = {b["base07"]}',
