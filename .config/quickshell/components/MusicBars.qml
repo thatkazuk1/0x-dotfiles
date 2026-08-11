@@ -1,7 +1,7 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
-import "../Singletons"
+import "../singletons"
 
 /**
  * Rest-pill spectrum: one rounded ember bar per cava band, packed into the

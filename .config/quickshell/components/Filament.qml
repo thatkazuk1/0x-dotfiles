@@ -1,7 +1,7 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
-import "../Singletons"
+import "../singletons"
 
 /**
  * Thread primitive for the link surface, matches the mixer fader's filament

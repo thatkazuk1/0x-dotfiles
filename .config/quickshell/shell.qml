@@ -5,7 +5,7 @@ import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
 import Quickshell.Hyprland
-import "Singletons"
+import "singletons"
 
 /**
  * Ukishima top shell. Each monitor carries two layer-shell windows:

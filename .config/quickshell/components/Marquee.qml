@@ -1,5 +1,5 @@
 import QtQuick
-import "../Singletons"
+import "../singletons"
 
 /**
  * Single-line text that ping-pong scrolls when wider than the available width,

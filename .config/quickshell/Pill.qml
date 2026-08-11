@@ -8,7 +8,7 @@ import Quickshell.Io
 import Quickshell.Networking
 import Quickshell.Bluetooth
 import Quickshell.Hyprland
-import "Singletons"
+import "singletons"
 import "components"
 import "surfaces"
 

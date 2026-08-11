@@ -158,12 +158,12 @@ Available IPC handlers: `launcher`, `wallpaper`, `clipboard`, `mixer`, `calendar
 
 ## Layout
 
-All paths resolve at runtime relative to this project folder (`Singletons/Config.qml` self-locates it), so the shell works regardless of where it was launched from:
+All paths resolve at runtime relative to this project folder (`singletons/Config.qml` self-locates it), so the shell works regardless of where it was launched from:
 
 - shell entry: `shell.qml` (+ the pill body `Pill.qml` at the root)
 - surfaces: `surfaces/` — the panels the pill morphs into
 - components: `components/` — reusable widgets (pill surface base, glyphs, settings kit, …)
-- singletons: `Singletons/` — one per-service singleton (`Config`, `Flags`, `Theme`, `Walls`, `Players`, …)
+- singletons: `singletons/` — one per-service singleton (`Config`, `Flags`, `Theme`, `Walls`, `Players`, …)
 - helpers: `lib/` — pure JS (`fuzzy.js`, `calc.js`, `binds.js`, …)
 - scripts: `scripts/` — wallpaper set/thumb/search, palette (`wallpaper.sh`, `wallcolors.py`, …)
 - Hyprland-compat outputs: `modules/*.lua`, `hyprsunset.conf` under this folder

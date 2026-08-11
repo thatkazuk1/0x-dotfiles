@@ -2,7 +2,7 @@ import QtQuick
 import Quickshell.Widgets
 import Quickshell.Hyprland
 import Quickshell.Services.Pipewire
-import "../Singletons"
+import "../singletons"
 import "../components"
 
 Item {

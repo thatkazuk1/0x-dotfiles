@@ -3,7 +3,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import Quickshell
 import Quickshell.Hyprland
-import "../Singletons"
+import "../singletons"
 import "../components"
 
 /**

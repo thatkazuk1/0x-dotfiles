@@ -1,7 +1,7 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
-import "../Singletons"
+import "../singletons"
 
 /**
  * Mini-segmented choice control. `options` is a list of `{ label, value }`; the
