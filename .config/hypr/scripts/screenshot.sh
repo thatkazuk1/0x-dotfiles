@@ -11,7 +11,7 @@ mkdir -p "$DIR"
 
 case "${1:-}" in
     region)
-        hyprshot -m region -z -o "$DIR"
+        hyprshot -m region -o "$DIR"
         ;;
     monitor)
         hyprshot -m output -m active -o "$DIR"
