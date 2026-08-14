@@ -68,6 +68,8 @@ Item {
     readonly property var wifiNets: (wifiDev && wifiDev.networks) ? wifiDev.networks.values : []
     readonly property var wifiActive: wifiNets.find(function(n) { return n && n.connected }) || null
     readonly property real wifiLevel: (wifiActive && wifiActive.signalStrength) || 0
+    readonly property var wiredDev: netDevices.find(function(d) { return d && d.type === DeviceType.Wired }) || null
+    readonly property bool wiredConnected: !!(wiredDev && wiredDev.connected)
     readonly property var btAdapter: (typeof Bluetooth !== "undefined" && Bluetooth) ? Bluetooth.defaultAdapter : null
     readonly property bool btOn: btAdapter ? btAdapter.enabled === true : false
     readonly property bool surfaceOpen: surface.length > 0
@@ -1564,8 +1566,36 @@ Item {
 
                 Row {
                     anchors.verticalCenter: parent.verticalCenter
-                    visible: pill.wifiDev !== null || pill.btAdapter !== null || Battery.present
+                    visible: pill.wifiDev !== null || pill.wiredConnected || pill.btAdapter !== null || Battery.present
                     spacing: 12 * pill.s
+
+                    Item {
+                        id: ethernetIcon
+                        anchors.verticalCenter: parent.verticalCenter
+                        visible: pill.wiredConnected
+                        width: 15 * pill.s
+                        height: 15 * pill.s
+
+                        GlyphIcon {
+                            anchors.fill: parent
+                            name: "ethernet"
+                            color: ethernetHover.hovered ? Theme.cream : Theme.iconDim
+                            stroke: 1.7
+                        }
+
+                        HoverHandler {
+                            id: ethernetHover
+                            enabled: hover.live
+                        }
+
+                        Tooltip {
+                            s: pill.s
+                            placement: "below"
+                            title: "Ethernet"
+                            desc: pill.wiredDev && pill.wiredDev.name ? pill.wiredDev.name : "Wired connection"
+                            show: ethernetHover.hovered
+                        }
+                    }
 
                     Item {
                         id: wifiIcon
@@ -1599,6 +1629,14 @@ Item {
                                 pill.requestSurface("wifi");
                             }
                             onContainsMouseChanged: if (containsMouse) pill.soulTarget = "wifi"
+                        }
+
+                        Tooltip {
+                            s: pill.s
+                            placement: "below"
+                            title: "Wi-Fi"
+                            desc: pill.wifiActive && pill.wifiActive.name ? pill.wifiActive.name : (pill.wifiOn ? "Not connected" : "Off")
+                            show: wifiArea.containsMouse
                         }
                     }
 
@@ -1635,6 +1673,14 @@ Item {
                             }
                             onContainsMouseChanged: if (containsMouse) pill.soulTarget = "bt"
                         }
+
+                        Tooltip {
+                            s: pill.s
+                            placement: "below"
+                            title: "Bluetooth"
+                            desc: pill.btOn ? "On" : "Off"
+                            show: btArea.containsMouse
+                        }
                     }
 
                     Item {
@@ -1664,6 +1710,14 @@ Item {
                             cursorShape: Qt.PointingHandCursor
                             onClicked: pill.requestSurface("battery")
                             onContainsMouseChanged: if (containsMouse) pill.soulTarget = "battery"
+                        }
+
+                        Tooltip {
+                            s: pill.s
+                            placement: "below"
+                            title: "Battery"
+                            desc: Battery.stateLabel + (Battery.hasTime ? " · " + Battery.timeStr : "")
+                            show: batteryArea.containsMouse
                         }
                     }
                 }
@@ -1703,6 +1757,14 @@ Item {
                         onClicked: pill.requestSurface("link")
                         onContainsMouseChanged: if (containsMouse) pill.soulTarget = "inbox"
                     }
+
+                    Tooltip {
+                        s: pill.s
+                        placement: "below"
+                        title: "Notifications"
+                        desc: Notifs.unread > 0 ? Notifs.unread + " unread" : ""
+                        show: inboxArea.containsMouse
+                    }
                 }
 
                 Item {
@@ -1728,6 +1790,13 @@ Item {
                         onClicked: pill.requestSurface("mixer")
                         onContainsMouseChanged: if (containsMouse) pill.soulTarget = "mixer"
                     }
+
+                    Tooltip {
+                        s: pill.s
+                        placement: "below"
+                        title: "Mixer"
+                        show: mixerArea.containsMouse
+                    }
                 }
 
                 Item {
@@ -1752,6 +1821,13 @@ Item {
                         cursorShape: Qt.PointingHandCursor
                         onClicked: pill.requestSurface("sysmon")
                         onContainsMouseChanged: if (containsMouse) pill.soulTarget = "sysmon"
+                    }
+
+                    Tooltip {
+                        s: pill.s
+                        placement: "below"
+                        title: "System Monitor"
+                        show: sysmonArea.containsMouse
                     }
                 }
 
@@ -1806,6 +1882,14 @@ Item {
                         }
                         onContainsMouseChanged: if (containsMouse) pill.soulTarget = "recorder"
                     }
+
+                    Tooltip {
+                        s: pill.s
+                        placement: "below"
+                        title: "Screen Recorder"
+                        desc: ScreenRec.recording ? "Recording — right-click to stop" : ""
+                        show: recorderArea.containsMouse
+                    }
                 }
 
                 Item {
@@ -1830,6 +1914,13 @@ Item {
                         cursorShape: Qt.PointingHandCursor
                         onClicked: pill.requestSurface("wallpaper")
                         onContainsMouseChanged: if (containsMouse) pill.soulTarget = "wallpaper"
+                    }
+
+                    Tooltip {
+                        s: pill.s
+                        placement: "below"
+                        title: "Wallpaper"
+                        show: wallpaperArea.containsMouse
                     }
                 }
 
@@ -1856,6 +1947,13 @@ Item {
                         onClicked: pill.requestSurface("clipboard")
                         onContainsMouseChanged: if (containsMouse) pill.soulTarget = "clipboard"
                     }
+
+                    Tooltip {
+                        s: pill.s
+                        placement: "below"
+                        title: "Clipboard"
+                        show: clipboardArea.containsMouse
+                    }
                 }
 
                 Item {
@@ -1880,6 +1978,13 @@ Item {
                         cursorShape: Qt.PointingHandCursor
                         onClicked: pill.requestSurface("launcher")
                         onContainsMouseChanged: if (containsMouse) pill.soulTarget = "launcher"
+                    }
+
+                    Tooltip {
+                        s: pill.s
+                        placement: "below"
+                        title: "Launcher"
+                        show: launcherArea.containsMouse
                     }
                 }
 
@@ -1906,6 +2011,13 @@ Item {
                         onClicked: pill.requestSurface("appearance")
                         onContainsMouseChanged: if (containsMouse) pill.soulTarget = "appearance"
                     }
+
+                    Tooltip {
+                        s: pill.s
+                        placement: "below"
+                        title: "Appearance"
+                        show: appearanceArea.containsMouse
+                    }
                 }
 
                 Item {
@@ -1930,6 +2042,14 @@ Item {
                         cursorShape: Qt.PointingHandCursor
                         onClicked: pill.requestSurface("power")
                         onContainsMouseChanged: if (containsMouse) pill.soulTarget = "power"
+                    }
+
+                    Tooltip {
+                        s: pill.s
+                        placement: "below"
+                        align: "right"
+                        title: "Power"
+                        show: powerArea.containsMouse
                     }
                 }
             }
