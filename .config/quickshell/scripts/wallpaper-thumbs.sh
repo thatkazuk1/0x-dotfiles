@@ -21,7 +21,7 @@ for f in "$dir"/*.png; do
     [ -n "$(find "$wpdir" -type f -name "$base" -print -quit)" ] || rm -f "$f"
 done
 
-find "$wpdir" -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.gif' -o -iname '*.webp' -o -iname '*.mp4' -o -iname '*.webm' -o -iname '*.mkv' -o -iname '*.mov' \) | while IFS= read -r src; do
+find "$wpdir" -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.gif' -o -iname '*.webp' -o -iname '*.mp4' -o -iname '*.webm' -o -iname '*.mkv' -o -iname '*.mov' \) | while IFS= read -r src; do
     thumb="$dir/$(basename "$src").png"
     if [ ! -s "$thumb" ] || [ "$src" -nt "$thumb" ]; then
         case "$src" in
