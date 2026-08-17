@@ -1,7 +1,7 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
-import "../Singletons"
+import "../singletons"
 
 /**
  * Numeric value control for the settings tabs. At rest it is just the number, so

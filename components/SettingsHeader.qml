@@ -1,5 +1,5 @@
 import QtQuick
-import "../Singletons"
+import "../singletons"
 
 /**
  * Settings surface header: the surface kanji (gated by Flags.showGlyphs) and its

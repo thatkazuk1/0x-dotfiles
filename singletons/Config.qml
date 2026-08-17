@@ -14,7 +14,7 @@ import Quickshell
 Singleton {
     id: root
 
-    /** Absolute filesystem path of the quickshell project folder (parent of Singletons/). */
+    /** Absolute filesystem path of the quickshell project folder (parent of singletons/). */
     readonly property string configDir: {
         var p = root._localPath(Qt.resolvedUrl("../"));
         return p.length > 1 && p.slice(-1) === "/" ? p.slice(0, -1) : p;

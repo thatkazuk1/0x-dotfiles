@@ -2,7 +2,7 @@ pragma ComponentBehavior: Bound
 
 import QtQuick
 import QtQuick.Effects
-import "../Singletons"
+import "../singletons"
 
 /**
  * Labelled dropdown for the display surface: a left caption, a value chip styled

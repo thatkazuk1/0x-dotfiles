@@ -6,7 +6,7 @@ import QtMultimedia
 import Quickshell
 import Quickshell.Io
 import Quickshell.Widgets
-import "../Singletons"
+import "../singletons"
 import "../components"
 
 /**
