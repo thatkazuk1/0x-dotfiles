@@ -49,8 +49,8 @@ PillSurface {
     amePoint: Qt.point(heatX, heatY)
 
     readonly property var actions: [
-        { key: "lock",     glyph: "lock",     label: "Lock",     confirm: false, dispatch: "",             argv: ["loginctl", "lock-session"] },
-        { key: "logout",   glyph: "logout",   label: "Logout",   confirm: false, dispatch: "exit",         argv: [] },
+        { key: "lock",     glyph: "lock",     label: "Lock",     confirm: false, dispatch: "",             argv: [Config.hyprPath("scripts", "lock.sh")] },
+        { key: "logout",   glyph: "logout",   label: "Logout",   confirm: false, dispatch: "hl.dsp.exit()", argv: [] },
         { key: "suspend",  glyph: "suspend",  label: "Sleep",    confirm: false, dispatch: "",             argv: ["systemctl", "suspend"] },
         { key: "reboot",   glyph: "reboot",   label: "Restart",  confirm: true,  dispatch: "",             argv: ["systemctl", "reboot"] },
         { key: "shutdown", glyph: "shutdown", label: "Shutdown", confirm: true,  dispatch: "",             argv: ["systemctl", "poweroff"] }

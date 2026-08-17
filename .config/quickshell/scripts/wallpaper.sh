@@ -9,7 +9,7 @@ if [ -z "$WPDIR" ]; then
     # so an incidental picture never hijacks the default.
     for cand in "$HOME/Pictures/Wallpapers" "$HOME/Pictures/wallpapers" "$HOME/Wallpapers" "$HOME/wallpapers"; do
         [ -d "$cand" ] || continue
-        n=$(find "$cand" -maxdepth 1 -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.gif' -o -iname '*.webp' -o -iname '*.mp4' -o -iname '*.webm' -o -iname '*.mkv' -o -iname '*.mov' \) | awk 'NR<=2' | wc -l)
+        n=$(find "$cand" -maxdepth 1 -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.gif' -o -iname '*.webp' -o -iname '*.mp4' -o -iname '*.webm' -o -iname '*.mkv' -o -iname '*.mov' \) | awk 'NR<=2' | wc -l)
         if [ "$n" -ge 2 ]; then WPDIR="$cand"; break; fi
     done
     [ -n "$WPDIR" ] || WPDIR="$HOME/Pictures/Wallpapers"
@@ -45,7 +45,7 @@ ensure_daemon() {
 }
 
 list_pics() {
-    find "$WPDIR" -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.gif' -o -iname '*.webp' -o -iname '*.mp4' -o -iname '*.webm' -o -iname '*.mkv' -o -iname '*.mov' \)
+    find "$WPDIR" -type f \( -iname '*.jpg' -o -iname '*.png' -o -iname '*.gif' -o -iname '*.webp' -o -iname '*.mp4' -o -iname '*.webm' -o -iname '*.mkv' -o -iname '*.mov' \)
 }
 
 refill_bag() {
