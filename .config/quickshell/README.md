@@ -4,14 +4,14 @@
 
 Ukishima (浮島, *"floating island"*) is a widget layer for Hyprland built around a single morphing pill at the top of every monitor. Collapsed it is a thin warm-vermillion strip; hover it and it expands in place into a control centre — workspace dots, clock, media, system readouts — and every module grows its own surface out of the pill itself. Nothing ever pops up as a separate panel.
 
-The project is fully self-contained: the config folder holds the QML surfaces, its own scripts and the Hyprland-compat files it generates, so nothing is copied into or sourced from another dotfiles tree.
+The project is fully self-contained. It makes no changes to existing Hyprland config files.
 
 ## Preview
 
 <p align="center">
-<img src="preview/mpv-shot0001.jpg" width="70%" alt="Ukishima preview 1">
-<img src="preview/mpv-shot0008.jpg" width="70%" alt="Ukishima preview 2">
-<img src="preview/mpv-shot0010.jpg" width="70%" alt="Ukishima preview 3">
+<a href="https://youtu.be/Xkld6B5Pke0">
+  <img src="https://img.youtube.com/vi/Xkld6B5Pke0/maxresdefault.jpg" width="80%" alt="Ukishima demo on YouTube">
+</a>
 </p>
 
 See the [full preview gallery](preview/README.md) for all screenshots.
@@ -98,7 +98,7 @@ Also remove any references you added yourself: the `source = ~/.config/quickshel
 From a clone:
 
 ```bash
-git clone https://github.com/amanhex/ukishima ~/.config/quickshell/ukishima
+git clone https://github.com/amanhex/Ukishima ~/.config/quickshell/ukishima
 quickshell --config "$HOME/.config/quickshell/ukishima"
 ```
 

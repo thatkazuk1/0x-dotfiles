@@ -59,6 +59,15 @@ PillSurface {
     readonly property int splitAfter: 3
 
     function run(a) {
+        if (a.key === "suspend" && Flags.keepAwake) {
+            Quickshell.execDetached(["sh", "-c",
+                "gdbus call --session --dest org.freedesktop.Notifications "
+                + "--object-path /org/freedesktop/Notifications "
+                + "--method org.freedesktop.Notifications.Notify "
+                + "Pill 0 '' 'Keep awake is on' 'Turn off Keep awake to sleep.' '[]' '{}' 5000 >/dev/null 2>&1"]);
+            root.requestClose();
+            return;
+        }
         if (a.dispatch && a.dispatch.length)
             Hyprland.dispatch(a.dispatch);
         else
